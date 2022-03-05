@@ -1,0 +1,6 @@
+---
+Name: notifications
+---
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - SilverStripers\CustomEmails\Extension\ConfigExtension

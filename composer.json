@@ -1,6 +1,6 @@
 {
     "name": "silverstripers/custom-emails",
-    "description": "Send fully configurable custom emials from Silverstripe",
+    "description": "Send fully configurable custom emails from Silverstripe",
     "type": "silverstripe-vendormodule",
     "keywords": ["silverstripe", "emails", "module"],
     "license": "BSD-3-Clause",
@@ -10,6 +10,7 @@
         "email": "nivanka@silverstripers.com"
     }],
     "require": {
+        "php": ">=7.4",
         "silverstripe/framework": "^4.10",
         "silverstripe/cms": "^4.10"
     },
