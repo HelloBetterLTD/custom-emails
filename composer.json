@@ -18,7 +18,7 @@
             "client/dist",
             "client/lang"
         ],
-        "installer-name": "seo"
+        "installer-name": "custom-emails"
     },
     "autoload": {
         "psr-4": {
