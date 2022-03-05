@@ -10,8 +10,8 @@
         "email": "nivanka@silverstripers.com"
     }],
     "require": {
-        "silverstripe/framework": "^4.10.*",
-        "silverstripe/cms": "^4.10.*"
+        "silverstripe/framework": "^4.10",
+        "silverstripe/cms": "^4.10"
     },
     "extra": {
         "expose": [
