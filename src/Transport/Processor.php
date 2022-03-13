@@ -49,7 +49,7 @@ class Processor
             $this->setFrom($notification->FromEmail);
         }
         if ($notification->ToEmail) {
-            $this->setFrom($notification->ToEmail);
+            $this->setTo($notification->ToEmail);
         }
         if ($notification->ReplyToEmail) {
             $this->setReplyTo($notification->ReplyToEmail);
@@ -127,9 +127,9 @@ class Processor
         if (empty($this->to)) {
             throw new \Exception(sprintf('Email "%s" doesnt have a to address', $this->notification->Type));
         }
-        if (empty($this->from)) {
-            throw new \Exception(sprintf('Email "%s" doesnt have a from address', $this->notification->Type));
-        }
+//        if (empty($this->from)) {
+//            throw new \Exception(sprintf('Email "%s" doesnt have a from address', $this->notification->Type));
+//        }
         if (empty($this->notification->Subject)) {
             throw new \Exception(sprintf('Email "%s" doesnt have a subject', $this->notification->Type));
         }
@@ -143,7 +143,9 @@ class Processor
 
         $email = Email::create();
         $email->setTo($this->to);
-        $email->setFrom($this->from);
+        if ($this->from) {
+            $email->setFrom($this->from);
+        }
         if ($this->replyTo) {
             $email->setReplyTo($this->replyTo);
         }
