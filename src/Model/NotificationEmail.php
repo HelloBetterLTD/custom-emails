@@ -73,7 +73,7 @@ class NotificationEmail extends DataObject implements PermissionProvider
                 ->setDescription('Leave blank if you are happy to send emails with the default email address'),
             TextField::create('ToEmail', 'To email')
                 ->setDescription('Leave blank for dynamic emails. For multiple email enter a comma separated text'),
-            TextField::create('ReplyToEmail', 'To email'),
+            TextField::create('ReplyToEmail', 'Reply to email'),
             TextField::create('CCEmail', 'CC email')
                 ->setDescription('Comma separate multiple emails'),
             TextField::create('BCCEmail', 'BCC email')
