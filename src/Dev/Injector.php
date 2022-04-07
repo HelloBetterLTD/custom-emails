@@ -18,6 +18,7 @@ class Injector
      *     'type' => [
      *          'name' => '',
      *          'arguments' => '',
+     *          'template' => ''
      *     ]
      * ]
      */
@@ -57,6 +58,15 @@ class Injector
             return $definitions[$type]['name'];
         }
         return 'Unknown';
+    }
+
+    public static function get_template_for_type($type)
+    {
+        $definitions = self::config()->get('definitions');
+        if (!empty($definitions[$type]) && !empty($definitions[$type]['template'])) {
+            return $definitions[$type]['template'];
+        }
+        return null;
     }
 
     public static function get_arguments_for_type($type)

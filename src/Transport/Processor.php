@@ -137,6 +137,8 @@ class Processor
             throw new \Exception(sprintf('Email "%s" doesnt have a body', $this->notification->Type));
         }
 
+        $template = $this->notification->getTemplate();
+
         $titleTemplate = SSViewer::fromString($this->notification->Subject);
         $bodyTemplate = SSViewer::fromString($this->notification->dbObject('Body')->forTemplate());
         $data = ArrayData::create($this->data);
@@ -156,7 +158,16 @@ class Processor
             $email->setBCC($this->bcc);
         }
         $email->setSubject(HTTP::absoluteURLs($data->renderWith($titleTemplate)));
-        $email->setBody(HTTP::absoluteURLs($data->renderWith($bodyTemplate)));
+
+        if ($template) {
+            $body = HTTP::absoluteURLs($data->renderWith($bodyTemplate));
+            $email->setHTMLTemplate($template);
+            $email->setData(array_merge([
+                'Layout' => $body
+            ], $this->data));
+        } else {
+            $email->setBody(HTTP::absoluteURLs($data->renderWith($bodyTemplate)));
+        }
 
         if ($this->notification->Attachments()->count()) {
             /* @var $attachment File */
@@ -170,8 +181,8 @@ class Processor
 
         foreach ($this->attachments as $attachment => $content) {
             $email->addAttachmentFromData(
-                $attachment,
-                $content
+                $content,
+                $attachment
             );
         }
 

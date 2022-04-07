@@ -142,5 +142,10 @@ class NotificationEmail extends DataObject implements PermissionProvider
         return Injector::get_arguments_for_type($this->Type);
     }
 
+    public function getTemplate()
+    {
+        return Injector::get_template_for_type($this->Type);
+    }
+
 
 }
