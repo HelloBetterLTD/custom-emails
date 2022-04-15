@@ -3,6 +3,7 @@
 namespace SilverStripers\CustomEmails\Transport;
 
 use SilverStripe\Assets\File;
+use SilverStripe\Control\Director;
 use SilverStripe\Control\Email\Email;
 use SilverStripe\Control\HTTP;
 use SilverStripe\Core\Injector\Injectable;
@@ -121,20 +122,19 @@ class Processor
 
     public function send() : bool
     {
-        if (!$this->validate()) {
-            throw new \Exception(sprintf('Email "%s" doesnt have all the data fields', $this->notification->Type));
-        }
-        if (empty($this->to)) {
-            throw new \Exception(sprintf('Email "%s" doesnt have a to address', $this->notification->Type));
-        }
-//        if (empty($this->from)) {
-//            throw new \Exception(sprintf('Email "%s" doesnt have a from address', $this->notification->Type));
-//        }
-        if (empty($this->notification->Subject)) {
-            throw new \Exception(sprintf('Email "%s" doesnt have a subject', $this->notification->Type));
-        }
-        if (empty($this->notification->Body)) {
-            throw new \Exception(sprintf('Email "%s" doesnt have a body', $this->notification->Type));
+        if (Director::isDev()) {
+            if (!$this->validate()) {
+                throw new \Exception(sprintf('Email "%s" doesnt have all the data fields', $this->notification->Type));
+            }
+            if (empty($this->to)) {
+                throw new \Exception(sprintf('Email "%s" doesnt have a to address', $this->notification->Type));
+            }
+            if (empty($this->notification->Subject)) {
+                throw new \Exception(sprintf('Email "%s" doesnt have a subject', $this->notification->Type));
+            }
+            if (empty($this->notification->Body)) {
+                throw new \Exception(sprintf('Email "%s" doesnt have a body', $this->notification->Type));
+            }
         }
 
         $template = $this->notification->getTemplate();
