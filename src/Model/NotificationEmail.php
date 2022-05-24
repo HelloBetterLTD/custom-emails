@@ -79,6 +79,9 @@ class NotificationEmail extends DataObject implements PermissionProvider
             TextField::create('BCCEmail', 'BCC email')
                 ->setDescription('Comma separate multiple emails'),
         ]);
+        if ($this->getIsDynamic()) {
+            $fields->removeByName('ToEmail');
+        }
         return $fields;
     }
 
@@ -147,5 +150,8 @@ class NotificationEmail extends DataObject implements PermissionProvider
         return Injector::get_template_for_type($this->Type);
     }
 
-
+    public function getIsDynamic()
+    {
+        return Injector::is_dynamic($this->Type);
+    }
 }
