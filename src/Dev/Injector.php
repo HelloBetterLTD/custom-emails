@@ -17,6 +17,7 @@ class Injector
      * [
      *     'type' => [
      *          'name' => '',
+     *          'dynamic' => '', # bool
      *          'arguments' => '',
      *          'template' => ''
      *     ]
@@ -74,6 +75,16 @@ class Injector
         $definitions = self::config()->get('definitions');
         if (!empty($definitions[$type])) {
             return $definitions[$type]['arguments'];
+        }
+        return [];
+    }
+    
+    
+    public static function is_dynamic($type)
+    {
+        $definitions = self::config()->get('definitions');
+        if (!empty($definitions[$type])) {
+            return !empty($definitions[$type]['dynamic']) && $definitions[$type]['dynamic'];
         }
         return [];
     }
