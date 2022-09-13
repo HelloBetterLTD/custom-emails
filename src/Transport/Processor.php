@@ -7,6 +7,7 @@ use SilverStripe\Control\Director;
 use SilverStripe\Control\Email\Email;
 use SilverStripe\Control\HTTP;
 use SilverStripe\Core\Injector\Injectable;
+use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\SSViewer;
 use SilverStripers\CustomEmails\Model\NotificationEmail;
@@ -141,7 +142,17 @@ class Processor
 
         $titleTemplate = SSViewer::fromString($this->notification->Subject);
         $bodyTemplate = SSViewer::fromString($this->notification->dbObject('Body')->forTemplate());
-        $data = ArrayData::create($this->data);
+
+        $mergeData = array_merge(
+            $this->data,
+            [
+                'Time' => DBDatetime::now(),
+                'Year' => DBDatetime::now()->Format('yyyy'),
+                'To' => implode(',', $this->to)
+            ]
+        );
+
+        $data = ArrayData::create($mergeData);
 
         $email = Email::create();
         $email->setTo($this->to);
@@ -164,7 +175,7 @@ class Processor
             $email->setHTMLTemplate($template);
             $email->setData(array_merge([
                 'Layout' => $body
-            ], $this->data));
+            ], $mergeData));
         } else {
             $email->setBody(HTTP::absoluteURLs($data->renderWith($bodyTemplate)));
         }
