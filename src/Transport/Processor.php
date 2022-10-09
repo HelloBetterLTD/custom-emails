@@ -148,7 +148,7 @@ class Processor
             [
                 'Time' => DBDatetime::now(),
                 'Year' => DBDatetime::now()->Format('yyyy'),
-                'To' => implode(',', $this->to)
+                'To' => implode(',', is_array($this->to) ? $this->to : [$this->to])
             ]
         );
 
