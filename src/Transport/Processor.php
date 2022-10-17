@@ -31,6 +31,7 @@ class Processor
     private $notification;
     private $to;
     private $from;
+    private $fromName;
     private $cc;
     private $bcc;
     private $replyTo;
@@ -48,7 +49,7 @@ class Processor
         }
         $this->notification = $notification;
         if ($notification->FromEmail) {
-            $this->setFrom($notification->FromEmail);
+            $this->setFrom($notification->FromEmail, $notification->FromName);
         }
         if ($notification->ToEmail) {
             $this->setTo($notification->ToEmail);
@@ -71,9 +72,10 @@ class Processor
         return $this;
     }
 
-    public function setFrom($from) : Processor
+    public function setFrom($from, $name = null) : Processor
     {
         $this->from = $from;
+        $this->fromName = $name;
         return $this;
     }
 
@@ -157,7 +159,7 @@ class Processor
         $email = Email::create();
         $email->setTo($this->to);
         if ($this->from) {
-            $email->setFrom($this->from);
+            $email->setFrom($this->from, $this->fromName);
         }
         if ($this->replyTo) {
             $email->setReplyTo($this->replyTo);

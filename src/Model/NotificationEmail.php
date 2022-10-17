@@ -22,6 +22,7 @@ class NotificationEmail extends DataObject implements PermissionProvider
     private static $db = [
         'Type' => 'Varchar',
         'FromEmail' => 'Varchar',
+        'FromName' => 'Varchar',
         'ToEmail' => 'Text',
         'ReplyToEmail' => 'Varchar',
         'CCEmail' => 'Varchar',
@@ -71,6 +72,7 @@ class NotificationEmail extends DataObject implements PermissionProvider
         $fields->addFieldsToTab('Root.Settings', [
             TextField::create('FromEmail', 'From email')
                 ->setDescription('Leave blank if you are happy to send emails with the default email address'),
+            TextField::create('FromName', 'From name'),
             TextField::create('ToEmail', 'To email')
                 ->setDescription('Leave blank for dynamic emails. For multiple email enter a comma separated text'),
             TextField::create('ReplyToEmail', 'Reply to email'),
