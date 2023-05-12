@@ -21,6 +21,7 @@ class NotificationEmail extends DataObject implements PermissionProvider
 
     private static $db = [
         'Type' => 'Varchar',
+        'Enabled' => 'Boolean',
         'FromEmail' => 'Varchar',
         'FromName' => 'Varchar',
         'ToEmail' => 'Text',
@@ -40,6 +41,10 @@ class NotificationEmail extends DataObject implements PermissionProvider
     private static $summary_fields = [
         'Title',
         'Subject',
+    ];
+
+    private static $defaults = [
+        'Enabled' => true
     ];
 
     public function getCMSFields() : FieldList

@@ -140,6 +140,10 @@ class Processor
             }
         }
 
+        if (!$this->notification->Enabled) { // if disabled return.
+            return false;
+        }
+
         $template = $this->notification->getTemplate();
 
         $titleTemplate = SSViewer::fromString($this->notification->Subject);
