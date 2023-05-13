@@ -13,6 +13,7 @@ use SilverStripe\Security\Permission;
 use SilverStripe\Security\PermissionProvider;
 use SilverStripers\CustomEmails\Dev\Injector;
 use SilverStripers\CustomEmails\Transport\Processor;
+use SilverStripers\GridSwitch\Field\SwitchField;
 
 class NotificationEmail extends DataObject implements PermissionProvider
 {
@@ -89,6 +90,12 @@ class NotificationEmail extends DataObject implements PermissionProvider
         if ($this->getIsDynamic()) {
             $fields->removeByName('ToEmail');
         }
+
+        $fields->replaceField('Enabled',
+            SwitchField::create('Enabled', 'Enabled')
+                ->setOn($this->Enabled)
+        );
+
         return $fields;
     }
 
