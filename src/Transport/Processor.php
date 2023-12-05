@@ -123,7 +123,7 @@ class Processor
         return true;
     }
 
-    public function send() : bool
+    public function send() : bool|null
     {
         if (Director::isDev()) {
             if (!$this->validate()) {
