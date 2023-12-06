@@ -203,7 +203,8 @@ class Processor
             );
         }
 
-        return $email->send();
+        $email->send();
+        return true;
     }
 
 }
