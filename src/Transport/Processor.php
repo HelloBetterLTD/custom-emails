@@ -72,7 +72,7 @@ class Processor
         return $this;
     }
 
-    public function setFrom($from, $name = null) : Processor
+    public function setFrom($from, $name = '') : Processor
     {
         $this->from = $from;
         $this->fromName = $name;
