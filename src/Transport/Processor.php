@@ -49,7 +49,7 @@ class Processor
         }
         $this->notification = $notification;
         if ($notification->FromEmail) {
-            $this->setFrom($notification->FromEmail, $notification->FromName);
+            $this->setFrom($notification->FromEmail, $notification->FromName ?? '');
         }
         if ($notification->ToEmail) {
             $this->setTo($notification->ToEmail);
@@ -163,7 +163,7 @@ class Processor
         $email = Email::create();
         $email->setTo($this->to);
         if ($this->from) {
-            $email->setFrom($this->from, $this->fromName);
+            $email->setFrom($this->from, $this->fromName ?? '');
         }
         if ($this->replyTo) {
             $email->setReplyTo($this->replyTo);
