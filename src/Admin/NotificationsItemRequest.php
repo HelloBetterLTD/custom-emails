@@ -5,6 +5,7 @@ namespace SilverStripers\CustomEmails\Admin;
 use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest;
+use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\ValidationResult;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripers\CustomEmails\Model\NotificationEmail;
@@ -38,7 +39,8 @@ class NotificationsItemRequest extends GridFieldDetailForm_ItemRequest
         $arguments = $notification->getArguments();
         $params = [];
         foreach ($arguments as $name) {
-            $params[$name] = self::get_random_value();
+            $params[$name] = DBHTMLText::create()
+                ->setValue(sprintf('<span style="border: 1px solid red;">%s value</span>', $name)); //self::get_random_value();
         }
         $processor = NotificationEmail::get_processor(
             $notification->Type,
