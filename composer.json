@@ -15,10 +15,6 @@
         "silverstripers/grid-field-switch": "*"
     },
     "extra": {
-        "expose": [
-            "client/dist",
-            "client/lang"
-        ],
         "installer-name": "custom-emails"
     },
     "autoload": {
