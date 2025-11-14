@@ -10,8 +10,8 @@
         "email": "nivanka@silverstripers.com"
     }],
     "require": {
-        "php": ">=7.4|>=8",
-        "silverstripe/framework": "4.* | 5.*",
+        "php": "^8",
+        "silverstripe/recipe-cms": "^6",
         "silverstripers/grid-field-switch": "*"
     },
     "extra": {
