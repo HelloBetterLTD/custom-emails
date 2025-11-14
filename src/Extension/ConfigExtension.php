@@ -2,6 +2,7 @@
 
 namespace SilverStripers\CustomEmails\Extension;
 
+use SilverStripe\Core\Extension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
@@ -10,13 +11,12 @@ use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\Forms\GridField\GridFieldEditButton;
 use SilverStripe\Forms\TextField;
-use SilverStripe\ORM\DataExtension;
 use SilverStripers\CustomEmails\Admin\NotificationsItemRequest;
 use SilverStripers\CustomEmails\Model\NotificationEmail;
 use SilverStripers\GridSwitch\Field\SwitchField;
 use Symbiote\GridFieldExtensions\GridFieldEditableColumns;
 
-class ConfigExtension extends DataExtension
+class ConfigExtension extends Extension
 {
 
     private static $db = [

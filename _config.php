@@ -1,7 +1,7 @@
 <?php
 
 use SilverStripe\Core\Manifest\ModuleLoader;
-use SilverStripe\Forms\HTMLEditor\TinyMCEConfig;
+use SilverStripe\TinyMCE\TinyMCEConfig;
 
 $module = ModuleLoader::inst()->getManifest()->getModule('silverstripe/admin');
 /** @var TinyMCEConfig $editorConfig */
