@@ -8,7 +8,7 @@ use SilverStripe\Control\Email\Email;
 use SilverStripe\Control\HTTP;
 use SilverStripe\Core\Injector\Injectable;
 use SilverStripe\ORM\FieldType\DBDatetime;
-use SilverStripe\View\ArrayData;
+use SilverStripe\Model\ArrayData;
 use SilverStripe\View\SSViewer;
 use SilverStripers\CustomEmails\Model\NotificationEmail;
 
