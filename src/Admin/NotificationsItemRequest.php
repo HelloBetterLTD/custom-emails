@@ -6,7 +6,7 @@ use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest;
 use SilverStripe\ORM\FieldType\DBHTMLText;
-use SilverStripe\ORM\ValidationResult;
+use SilverStripe\Core\Validation\ValidationResult;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripers\CustomEmails\Model\NotificationEmail;
 
