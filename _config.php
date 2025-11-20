@@ -11,9 +11,9 @@ $editorConfig
         'contextmenu' => null,
         'image' => null,
         'anchor' => null,
-        'sslink' => $module->getResource('client/dist/js/TinyMCE_sslink.js'),
-        'sslinkexternal' => $module->getResource('client/dist/js/TinyMCE_sslink-external.js'),
-        'sslinkemail' => $module->getResource('client/dist/js/TinyMCE_sslink-email.js'),
+//        'sslink' => $module->getResource('client/dist/js/TinyMCE_sslink.js'),
+//        'sslinkexternal' => $module->getResource('client/dist/js/TinyMCE_sslink-external.js'),
+//        'sslinkemail' => $module->getResource('client/dist/js/TinyMCE_sslink-email.js'),
     ])
     ->setOptions([
         'friendly_name' => 'Default CMS',
