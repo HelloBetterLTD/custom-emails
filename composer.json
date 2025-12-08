@@ -11,7 +11,8 @@
     }],
     "require": {
         "php": "^8.3",
-        "silverstripe/recipe-cms": "^6"
+        "silverstripe/recipe-cms": "^6",
+        "silverstripers/grid-field-switch": "dev-master"
     },
     "extra": {
         "installer-name": "custom-emails"
