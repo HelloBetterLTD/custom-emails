@@ -12,7 +12,7 @@
     "require": {
         "php": "^8.3",
         "silverstripe/recipe-cms": "^6",
-        "silverstripers/grid-field-switch": "dev-master"
+        "silverstripers/grid-field-switch": "dev-2x"
     },
     "extra": {
         "installer-name": "custom-emails"
